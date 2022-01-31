@@ -8,10 +8,8 @@ let CHAIN_ID = ChainId.RINKEBY_TESTNET;
 let gen_f_data = {};
 let NFT_ADDRESS = GENF_TOKEN[CHAIN_ID];
 
-if (!GEN_F) GEN_F = new GenF(CHAIN_ID);
-
 async function init() {
-    
+    if (!GEN_F) GEN_F = new GenF(CHAIN_ID);
     await fetchData();
     events();
 }

@@ -7,10 +7,8 @@ let CHAIN_ID = ChainId.RINKEBY_TESTNET;
 let gen_f_data = {};
 let NFT_ADDRESS = GENF_TOKEN[CHAIN_ID];
 
-if (!GEN_F) GEN_F = new GenF(CHAIN_ID);
-
 async function init() {
-    
+    if (!GEN_F) GEN_F = new GenF(CHAIN_ID);
     await fetchData();
     events();
 }
@@ -58,8 +56,8 @@ async function getWalletStatus() {
       status = 'There was an error checking your wallet status';
       console.log('wallet: reading wallet status error',e);      
     }
-    console.log('check wallet status:', status);
-    
+    // console.log('check wallet status:', status);
+
     document.getElementById('wallet_status').innerHTML = status;
     
   }
