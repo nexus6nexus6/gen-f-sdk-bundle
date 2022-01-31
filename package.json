@@ -1,0 +1,19 @@
+{
+  "name": "flooz-world",
+  "version": "1.0.0",
+  "description": "Browserified GEN-F SDK package",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify index.js -o dist/gen-f-sdk-bundle.js"
+  },
+  "author": "grega@flooz.link",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  },
+  "dependencies": {
+    "@ethersproject/units": "^5.5.0",
+    "@flooz/gen-f-sdk": "^0.0.22",
+    "jquery": "^3.6.0"
+  }
+}
