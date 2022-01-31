@@ -35,6 +35,17 @@ async function events() {
         e && e.preventDefault();
         getWalletStatus();
     };
+
+    var input = document.getElementById('wallet_address');
+    input.addEventListener('keyup', function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById('check_status').click();
+      }
+    });
 }
 
 async function getWalletStatus() {
@@ -57,8 +68,8 @@ async function getWalletStatus() {
       status = 'There was an error checking your wallet status';
       console.log('wallet: reading wallet status error',e);      
     }
-    console.log('check wallet status:', status);
-    
+    // console.log('check wallet status:', status);
+
     document.getElementById('wallet_status').innerHTML = status;
     
   }
