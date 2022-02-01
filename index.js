@@ -54,7 +54,7 @@ async function getWalletStatus() {
 
     let status='';
     try {
-      let tmp = await GEN_F.getWhitelistAllocation(address);
+      let tmp = await GEN_F.getWhitelistAllocation(address, true);
       if (tmp > 0) {
         status = 'Sup fam! You are on the whitelist';
         if (tmp > 1) {

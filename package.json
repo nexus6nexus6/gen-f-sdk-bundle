@@ -1,6 +1,6 @@
 {
   "name": "flooz-world",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Browserified GEN-F SDK package",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@ethersproject/units": "^5.5.0",
-    "@flooz/gen-f-sdk": "^0.0.22",
+    "@flooz/gen-f-sdk": "^0.0.29",
     "jquery": "^3.6.0"
   }
 }
