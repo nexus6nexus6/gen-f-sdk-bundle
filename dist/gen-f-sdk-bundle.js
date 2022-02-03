@@ -28,12 +28,12 @@ async function fetchData() {
     gen_f_data.VOLUME_TRADED_ETH = stats?.totalVolume || 0;
     gen_f_data.OWNERS = stats?.owners || 0;
 
-    console.log(gen_f_data);
+    // console.log(gen_f_data);
 
     // bind the values to the stats elements
-    document.querySelector('.min-owners').innerHTML = gen_f_data.OWNERS;
-    document.querySelector('.min-floor-price').innerHTML = toFixedIfNecessary(gen_f_data.FLOOR_PRICE_ETH,3);
-    document.querySelector('.min-volume-traded').innerHTML = toFixedIfNecessary(gen_f_data.VOLUME_TRADED_ETH,3);
+    document.querySelector('.mint-owners').innerHTML = gen_f_data.OWNERS;
+    document.querySelector('.mint-floor-price').innerHTML = toFixedIfNecessary(gen_f_data.FLOOR_PRICE_ETH,3);
+    document.querySelector('.mint-volume-traded').innerHTML = toFixedIfNecessary(gen_f_data.VOLUME_TRADED_ETH,3);
     
 }
 
