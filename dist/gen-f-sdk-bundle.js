@@ -11,7 +11,6 @@ let NFT_ADDRESS = GENF_TOKEN[CHAIN_ID];
 async function init() {
     if (!GEN_F) GEN_F = new GenF(CHAIN_ID);
     await fetchData();
-    events();
 }
 init(); 
 
@@ -28,51 +27,19 @@ async function fetchData() {
     gen_f_data.FLOOR_PRICE_ETH = stats?.floorPrice || 0; 
     gen_f_data.VOLUME_TRADED_ETH = stats?.totalVolume || 0;
     gen_f_data.OWNERS = stats?.owners || 0;
+
+    console.log(gen_f_data);
+
+    // bind the values to the stats elements
+    document.querySelector('.min-owners').innerHTML = gen_f_data.OWNERS;
+    document.querySelector('.min-floor-price').innerHTML = toFixedIfNecessary(gen_f_data.FLOOR_PRICE_ETH,3);
+    document.querySelector('.min-volume-traded').innerHTML = toFixedIfNecessary(gen_f_data.VOLUME_TRADED_ETH,3);
+    
 }
 
-async function events() {
-    document.getElementById('check_status').onclick = function(e) {
-        e && e.preventDefault();
-        getWalletStatus();
-    };
-
-    var input = document.getElementById('wallet_address');
-    input.addEventListener('keyup', function(event) {
-      // Number 13 is the "Enter" key on the keyboard
-      if (event.keyCode === 13) {
-        // Cancel the default action, if needed
-        event.preventDefault();
-        // Trigger the button element with a click
-        document.getElementById('check_status').click();
-      }
-    });
+function toFixedIfNecessary( value, dp ){
+  return +parseFloat(value).toFixed( dp );
 }
-
-async function getWalletStatus() {
-    
-    let address = document.getElementById('wallet_address').value;
-    if (address+'x'=='x') return;
-
-    let status='';
-    try {
-      let tmp = await GEN_F.getWhitelistAllocation(address, true);
-      if (tmp > 0) {
-        status = 'Sup fam! You are on the whitelist';
-        if (tmp > 1) {
-          status = 'Sup fam!<br>You are on the whitelist and can mint up to '+tmp+' Gen-F dons';
-        }
-      } else {
-        status = 'Sorry, but we couldn\'t find you on our whitelist';
-      }
-    } catch(e) {
-      status = 'There was an error checking your wallet status';
-      console.log('wallet: reading wallet status error',e);      
-    }
-    // console.log('check wallet status:', status);
-
-    document.getElementById('wallet_status').innerHTML = status;
-    
-  }
 
 
 },{"./node_modules/@ethersproject/units":104,"./node_modules/@flooz/gen-f-sdk/dist/gen-f-sdk.cjs.development.js":122}],2:[function(require,module,exports){
